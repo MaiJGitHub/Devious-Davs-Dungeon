@@ -53,47 +53,42 @@ class UnoGame {
     }
 
     shuffleDrawPile() {
-    function shuffleDeck(deck) {
-        for (let i = deck.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [deck[i], deck[j]] = [deck[j], deck[i]];
+        function shuffleDeck(deck) {
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
         }
-    }
     }
 
     playCard(playerIndex) {
-  const currentPlayer = players[playerIndex];
-  const topCard = discardPile[discardPile.length - 1];
-  const playableCards = currentPlayer.filter((card) => canPlayCard(card, topCard));
-  if (playableCards.length === 0) {
-    const drawnCard = drawPile.pop();
-    currentPlayer.push(drawnCard);
-    if (canPlayCard(drawnCard, topCard)) {
-      discardPile.push(currentPlayer.pop());
-    }
-    function playTurn(playerIndex) {
-  const currentPlayer = players[playerIndex];
-  const topCard = discardPile[discardPile.length - 1];
-  const playableCards = currentPlayer.filter((card) => canPlayCard(card, topCard));
-  if (playableCards.length === 0) {
-    const drawnCard = drawPile.pop();
-    currentPlayer.push(drawnCard);
-    if (canPlayCard(drawnCard, topCard)) {
-      discardPile.push(currentPlayer.pop());
-    }
-    nextTurn();
-    return;
-  }
-    
-  nextTurn();
-};
-    return;
-  }
+        const currentPlayer = players[playerIndex];
+        const topCard = discardPile[discardPile.length - 1];
+        const playableCards = currentPlayer.filter((card) => canPlayCard(card, topCard));
+        if (playableCards.length === 0) {
+            const drawnCard = drawPile.pop();
+            currentPlayer.push(drawnCard);
+            if (canPlayCard(drawnCard, topCard)) {
+                discardPile.push(currentPlayer.pop());
+            }
+        }
     }
 
+    playTurn(playerIndex) {
+        const currentPlayer = players[playerIndex];
+        const topCard = discardPile[discardPile.length - 1];
+        const playableCards = currentPlayer.filter((card) => canPlayCard(card, topCard));
+        if (playableCards.length === 0) {
+            const drawnCard = drawPile.pop();
+            currentPlayer.push(drawnCard);
+            if (canPlayCard(drawnCard, topCard)) {
+                discardPile.push(currentPlayer.pop());
+            }
+            nextTurn();
+            return;
+        }
+    }
     
     nextTurn() {
-  currentPlayerIndex = (currentPlayerIndex + direction + players.length) % players.length
+        currentPlayerIndex = (currentPlayerIndex + direction + players.length) % players.length;
     };
-
-
