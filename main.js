@@ -2,7 +2,7 @@ kaboom({
 	background: [74, 48, 82],
 })
 
-loadSprite("bag", "./sprites/bag.png")
+loadSprite("skelly", "./sprites/Skelly.png")
 loadSprite("ghosty", "./sprites/ghosty.png")
 loadSprite("grass", "./sprites/Wall.png")
 loadSprite("steel", "./sprites/steel.png")
@@ -10,7 +10,11 @@ loadSprite("door", "./sprites/Gate3.png")
 loadSprite("key", "./sprites/key.png")
 loadSprite("man", "./sprites/Witch.png")
 loadSprite("box", "./sprites/Box2.png")
+loadSprite("spooky", "./sprites/Box2.png")
 
+scene("intro", () => {
+	
+	})
 scene("main", (levelIdx) => {
 
 	const SPEED = 320
@@ -18,7 +22,7 @@ scene("main", (levelIdx) => {
 	// character dialog data
 	const characters = {
 		"a": {
-			sprite: "bag",
+			sprite: "skelly",
 			msg: "Hi Dav! Welcome to your own dungeon, your goal is to find the key. The controls are w a s d to move, good luck and be careful! ;) ",
 		},
 		"b": {
@@ -30,24 +34,17 @@ scene("main", (levelIdx) => {
 	// level layouts
 	const levels = [
 		[	
-			"                                         ",
-			"                                         ",
-			"   =========================||=====",
-			"   =                              =",
-			"   =      $            *          =",
-			"   =                              =",
-			"   =         *        *       *   =",
-			"   =                              =",
-			"   =    *         *               =",
-			"   =                     *        =",
-			"   =          *                   =",
-			"   =                              =",
-			"   =                          *   =",
-			"   =                 *            =",
-			"   =  a @                         =",
-			"   =         *             *      =",
-			"   =                              =",
-			"   ================================",
+			"                              ",
+			"                              ",
+			"         ========|======",
+			"         =             =",
+			"         =   *  *    $ =",
+			"         =  *          =",
+			"         =         #   =",
+			"         =  a @        =",
+			"         =    *        =",
+			"         =         *   =",
+			"         ===============",
 		],
 		[	
 			"                                         ",
@@ -111,6 +108,16 @@ scene("main", (levelIdx) => {
 				area(),
 				body({ isStatic: true }),
 				anchor("center"),
+			],
+			
+			"#": () => [
+				sprite("spooky"),
+				area(),
+				body({ isStatic: true }),
+				anchor("center"),
+				"spooky",
+				
+				
 			],
 		},
 		// any() is a special function that gets called everytime there's a
@@ -178,6 +185,7 @@ scene("main", (levelIdx) => {
 	
 	let hasKey = false
 	const dialog = addDialog()
+	
 
 	player.onCollide("key", (key) => {
 		destroy(key)
@@ -195,6 +203,33 @@ scene("main", (levelIdx) => {
 			dialog.say("Wheres your keys?!")
 		}
 	})
+	
+	
+    player.onCollide("spooky", () => {
+		alert("Test")
+		const audio = new Audio('');
+        const audio2 = new Audio('');
+        audio.play();
+
+        setTimeout(() => {
+          document.getElementById('').style.display = 'none';
+          audio.pause();
+          document.getElementById('').style.display = 'inline-block';
+          audio2.play();
+          setTimeout(() => {
+            document.getElementById('').style.display = 'none';
+            document.getElementById('').style.display = 'inline-block';
+            setTimeout(() => {
+              window.location.href = "";
+            }, 8900);
+            //static for a few seconds then game over screen then reset to main menu
+          }, 2700);
+
+          //static for a few seconds then game over screen then reset to main menu
+        }, 900);
+	})
+	
+	
 
 	// talk on touch
 	player.onCollide("character", (ch) => {
