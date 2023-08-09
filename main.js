@@ -4,9 +4,9 @@ kaboom({
 
 loadSprite("bag", "./sprites/bag.png")
 loadSprite("ghosty", "./sprites/ghosty.png")
-loadSprite("grass", "./sprites/grass.png")
+loadSprite("grass", "./sprites/Wall.png")
 loadSprite("steel", "./sprites/steel.png")
-loadSprite("door", "./sprites/door.png")
+loadSprite("door", "./sprites/Gate3.png")
 loadSprite("key", "./sprites/key.png")
 loadSprite("bean", "./sprites/bean.png")
 loadSprite("pineapple", "./sprites/pineapple.png")
@@ -30,39 +30,53 @@ scene("main", (levelIdx) => {
 	// level layouts
 	const levels = [
 		[	
-			"                       ",
-			"       =======|========",
-			"       =              =",
-			"       =            = =",
-			"       =  =     =     =",
-			"       =         $    =",
-			"       =     =        =",
-			"       =        =     =",
-			"       =   =          =",
-			"       =           =  =",
-			"       =    a @       =",
-			"       = =            =",
-			"       =         =    =",
-			"       ================",
+			"                                         ",
+			"                                         ",
+			"         =========================||=====",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                  $           =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =  a @                         =",
+			"         =                              =",
+			"         =                              =",
+			"         ================================",
 		],
-		[
-			"       ----------------",
-			"       - $            -",
-			"       -           -  -",
-			"       |   -          -",
-			"       -       -      -",
-			"       -         -    -",
-			"       - -            -",
-			"       -      @  b -  -",
-			"       -    -         -",
-			"       ----------------",
+		[	
+			"                                         ",
+			"                                         ",
+			"         =========================||=====",
+			"         =                              =",
+			"         =   $                          =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =                              =",
+			"         =  a @                         =",
+			"         =                              =",
+			"         =                              =",
+			"         ================================",
 		],
 	]
 
 	const level = addLevel(levels[levelIdx], {
-		tileWidth: 64,
-		tileHeight: 64,
-		pos: vec2(64, 64),
+		tileWidth: 40,
+		tileHeight: 40,
+		pos: vec2(0, 30),
 		tiles: {
 			"=": () => [
 				sprite("grass"),
