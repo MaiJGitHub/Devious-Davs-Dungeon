@@ -8,8 +8,8 @@ loadSprite("grass", "./sprites/Wall.png")
 loadSprite("steel", "./sprites/steel.png")
 loadSprite("door", "./sprites/Gate3.png")
 loadSprite("key", "./sprites/key.png")
-loadSprite("bean", "./sprites/bean.png")
-loadSprite("pineapple", "./sprites/pineapple.png")
+loadSprite("man", "./sprites/Witch.png")
+loadSprite("box", "./sprites/Box2.png")
 
 scene("main", (levelIdx) => {
 
@@ -34,22 +34,22 @@ scene("main", (levelIdx) => {
 			"                                         ",
 			"         =========================||=====",
 			"         =                              =",
+			"         =      $            *          =",
 			"         =                              =",
+			"         =         *        *       *   =",
 			"         =                              =",
-			"         =                  $           =",
+			"         =    *         *               =",
+			"         =                     *        =",
+			"         =          *                   =",
 			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
+			"         =                          *   =",
+			"         =                 *            =",
+			"         = *                            =",
+			"         =                     *        =",
+			"         =       *    *                 =",
 			"         =                              =",
 			"         =  a @                         =",
-			"         =                              =",
+			"         =         *             *      =",
 			"         =                              =",
 			"         ================================",
 		],
@@ -91,13 +91,13 @@ scene("main", (levelIdx) => {
 				anchor("center"),
 			],
 			"$": () => [
-				sprite("key"),
+				sprite("box"),
 				area(),
 				anchor("center"),
 				"key",
 			],
 			"@": () => [
-				sprite("bean"),
+				sprite("man"),
 				area(),
 				body(),
 				anchor("center"),
@@ -109,6 +109,12 @@ scene("main", (levelIdx) => {
 				body({ isStatic: true }),
 				anchor("center"),
 				"door",
+			],
+			"*": () => [
+				sprite("box"),
+				area(),
+				body({ isStatic: true }),
+				anchor("center"),
 			],
 		},
 		// any() is a special function that gets called everytime there's a
@@ -173,36 +179,6 @@ scene("main", (levelIdx) => {
 			},
 		}
 	}
-	
-	function addFlamebar(position = vec2(0), angle = 0, num = 6) {
-
-	// Create a parent game object for position and rotation
-	const flameHead = add([
-		pos(position),
-		rotate(angle),
-	])
-
-	// Add each section of flame as children
-	for (let i = 0; i < num; i++) {
-		flameHead.add([
-			sprite("pineapple"),
-			pos(0, i * 48),
-			area(),
-			anchor("center"),
-			"flame",
-		])
-	}
-
-	// The flame head's rotation will affect all its children
-	flameHead.onUpdate(() => {
-		flameHead.angle += dt() * 60
-	})
-
-	return flameHead
-
-}
-
-	addFlamebar(vec2(200, 300), -60)
 	
 	let hasKey = false
 	const dialog = addDialog()
