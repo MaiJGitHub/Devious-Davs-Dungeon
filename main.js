@@ -11,6 +11,7 @@ loadSprite("key", "./sprites/key.png")
 loadSprite("man", "./sprites/Witch.png")
 loadSprite("box", "./sprites/Box2.png")
 loadSprite("spooky", "./sprites/Box2.png")
+loadSprite("gif", "./sprites/jumpscare-agatha-dark-deception-d54spbdyxgggqy9c.gif")
 
 scene("intro", () => {
 	
@@ -49,20 +50,20 @@ scene("main", (levelIdx) => {
 		[	
 			"                                         ",
 			"                                         ",
-			"         =========================||=====",
-			"         =                              =",
-			"         =   $                          =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =                              =",
-			"         =  a @                         =",
-			"         =                              =",
-			"         =                              =",
-			"         ================================",
+			"         =====================|==",
+			"         =*                * =  =",
+			"         =                   =  =",
+			"         =  ==================  =",
+			"         =                      =",
+			"         =                      =",
+			"         =  ====  ====  =========",
+			"         =  =     =     = $ = # =",
+			"         =  =     =     =   =   =",
+			"         =  = ===== =====   =   =",
+			"         =  = @ =*  =   a   =   =",
+			"         = *=   =               =",
+			"         =  =a  =               =",
+			"         ========================",
 		],
 	]
 
@@ -206,29 +207,40 @@ scene("main", (levelIdx) => {
 	
 	
     player.onCollide("spooky", () => {
-		alert("Test")
-		const audio = new Audio('');
-        const audio2 = new Audio('');
-        audio.play();
+		// const audio = new Audio('');
+  //      const audio2 = new Audio('');
+  //      audio.play();
 
-        setTimeout(() => {
-          document.getElementById('').style.display = 'none';
-          audio.pause();
-          document.getElementById('').style.display = 'inline-block';
-          audio2.play();
-          setTimeout(() => {
-            document.getElementById('').style.display = 'none';
-            document.getElementById('').style.display = 'inline-block';
-            setTimeout(() => {
-              window.location.href = "";
-            }, 8900);
-            //static for a few seconds then game over screen then reset to main menu
-          }, 2700);
+  //      setTimeout(() => {
+  //        document.getElementById('').style.display = 'none';
+  //        audio.pause();
+  //        document.getElementById('').style.display = 'inline-block';
+  //        audio2.play();
+  //        setTimeout(() => {
+  //          document.getElementById('').style.display = 'none';
+  //          document.getElementById('').style.display = 'inline-block';
+  //          setTimeout(() => {
+  //            window.location.href = "";
+  //          }, 8900);
+  //          //static for a few seconds then game over screen then reset to main menu
+  //        }, 2700);
 
-          //static for a few seconds then game over screen then reset to main menu
-        }, 900);
+  //        //static for a few seconds then game over screen then reset to main menu
+  //      }, 900);
 	})
+	let jumpscareTriggered = false;
 	
+	player.onCollide("spooky", () => {
+        if (!jumpscareTriggered) {
+            jumpscareTriggered = true;
+            const jumpscareEntity = add([
+                sprite("gif"), // Replace with your actual jumpscare GIF sprite name
+                pos(player.pos), // Display the jumpscare at the player's position
+                anchor("center"),
+                scale(1.5), // Adjust scale as needed
+            ]);
+        }
+    });
 	
 
 	// talk on touch
