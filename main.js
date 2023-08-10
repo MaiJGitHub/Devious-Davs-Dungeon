@@ -55,9 +55,9 @@ scene("main", (levelIdx) => {
 			"                              ",
 			"         ========|======",
 			"         =             =",
-			"         =   *  *    $ =",
+			"         =   #  *    $ =",
 			"         =  *          =",
-			"         =         #   =",
+			"         =        *    =",
 			"         =    *        =",
 			"         =a@           =",
 			"         =         *   =",
@@ -252,40 +252,44 @@ scene("main", (levelIdx) => {
 	
 	
     player.onCollide("spooky", () => {
+    	alert("works")
+    	go("gameover")
+    	
+    	
 		// const audio = new Audio('');
   //      const audio2 = new Audio('');
   //      audio.play();
 
-  //      setTimeout(() => {
-  //        document.getElementById('').style.display = 'none';
-  //        audio.pause();
-  //        document.getElementById('').style.display = 'inline-block';
-  //        audio2.play();
-  //        setTimeout(() => {
-  //          document.getElementById('').style.display = 'none';
-  //          document.getElementById('').style.display = 'inline-block';
-  //          setTimeout(() => {
-  //            window.location.href = "";
-  //          }, 8900);
-  //          //static for a few seconds then game over screen then reset to main menu
-  //        }, 2700);
+        // setTimeout(() => {
+        //   document.getElementById('').style.display = 'none';
+        //   audio.pause();
+        //   document.getElementById('').style.display = 'inline-block';
+        //   audio2.play();
+        //   setTimeout(() => {
+        //     document.getElementById('').style.display = 'none';
+        //     document.getElementById('').style.display = 'inline-block';
+        //     setTimeout(() => {
+        //       window.location.href = "";
+        //     }, 8900);
+        //     //static for a few seconds then game over screen then reset to main menu
+        //   }, 2700);
 
-  //        //static for a few seconds then game over screen then reset to main menu
-  //      }, 900);
+        //   //static for a few seconds then game over screen then reset to main menu
+        // }, 900);
 	})
 	let jumpscareTriggered = false;
 	
-	player.onCollide("spooky", () => {
-        if (!jumpscareTriggered) {
-            jumpscareTriggered = true;
-            const jumpscareEntity = add([
-                sprite("gif"), // Replace with your actual jumpscare GIF sprite name
-                pos(player.pos), // Display the jumpscare at the player's position
-                anchor("center"),
-                scale(1.5), // Adjust scale as needed
-            ]);
-        }
-    });
+	// player.onCollide("spooky", () => {
+ //       if (!jumpscareTriggered) {
+ //           jumpscareTriggered = true;
+ //           const jumpscareEntity = add([
+ //               sprite("gif"), // Replace with your actual jumpscare GIF sprite name
+ //               pos(player.pos), // Display the jumpscare at the player's position
+ //               anchor("center"),
+ //               scale(1.5), // Adjust scale as needed
+ //           ]);
+ //       }
+ //   });
 	
 
 	// talk on touch
@@ -314,6 +318,15 @@ scene("main", (levelIdx) => {
 scene("win", () => {
 	add([
 		text("You WIN!"),
+		pos(width() / 2, height() / 2),
+		anchor("center"),
+	])
+})
+
+scene("gameover", () => {
+	add([
+		// text("Game Over!"),
+		text("Oops! Looks like you picked the wrong box, try again!"),
 		pos(width() / 2, height() / 2),
 		anchor("center"),
 	])

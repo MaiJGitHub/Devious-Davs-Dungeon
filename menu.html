@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO!</title>
+</head>
+<body>
+    <!-- <div class="intro">
+        <p>Intro</p>
+    </div>
+    <div class="splash">
+        <p>Click anywhere to continue</p>
+    </div> -->
+    
+
+
+
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+        .heart{
+            height: 70px;
+            width: 70px;
+            background: #f20044;
+            position: relative;
+            transform: rotate(-45deg);
+            box-shadow: -10px 10px 90px #f20044;
+            animation: heart 2s linear infinite;
+        }
+
+        @keyframes heart{
+            0%{
+                transform: rotate(-45deg) scale(1.07);
+
+            }
+            80%{
+                transform: rotate(-45deg) scale(1.0);
+
+            }
+            100%{
+                transform: rotate(-45deg) scale(0.9);
+
+            }
+        }
+
+        .heart:before{
+            content: '';
+            position: absolute;
+            height: 70px;
+            width: 70px;
+            background: #f20044;
+            top: -50%;
+            border-radius: 50px;
+            box-shadow: -10px -10px 90px #f20044;
+        }
+
+        .heart:after{
+            content: '';
+            position: absolute;
+            height: 70px;
+            width: 70px;
+            background: #f20044;
+            right: -50%;
+            border-radius: 50px;
+            box-shadow: -10px -10px 90px #f20044;
+
+        }
+
+        p {
+            position: absolute;
+            color: white;
+            top: 70%;
+            cursor: pointer;
+        }
+      
+
+    </style>
+
+    <p>wake up...</p>
+    <div class="heart"></div>
+    
+</body>
+ <script src="menu.js"></script> 
+</html>
