@@ -18,17 +18,25 @@ scene("intro", () => {
 	})
 scene("main", (levelIdx) => {
 
-	const SPEED = 320
+	const SPEED = 280;
 
 	// character dialog data
 	const characters = {
 		"a": {
 			sprite: "skelly",
-			msg: "Hi Dav! Welcome to your own dungeon, your goal is to find the key. The controls are w a s d to move, good luck and be careful! ;) ",
+			msg: "Hi Dav! Welcome to your own dungeon, your goal is to find the key to move on in one of the boxes. It will disapear when you touch the right box. The controls are the arrow keys to move, good luck and be careful! ;) ",
 		},
 		"b": {
 			sprite: "ghosty",
 			msg: "Who are you? You can see me??",
+		},
+		"c": {
+			sprite: "skelly",
+			msg: "You made it! Find the Key again and you win!",
+		},
+		"d": {
+			sprite: "skelly",
+			msg: "choose wisely!",
 		},
 	}
 
@@ -47,7 +55,7 @@ scene("main", (levelIdx) => {
 			"         =         *   =",
 			"         ===============",
 		],
-		[	
+	
 			"                                         ",
 			"                                         ",
 			"         =====================|==",
@@ -60,9 +68,9 @@ scene("main", (levelIdx) => {
 			"         =  =     =     = $ = # =",
 			"         =  =     =     =   =   =",
 			"         =  = ===== =====   =   =",
-			"         =  = @ =*  =   a   =   =",
-			"         = *=   =               =",
-			"         =  =a  =               =",
+			"         =  = @ =*  =   d   =   =",
+			"         = *=c  =               =",
+			"         =  =   =               =",
 			"         ========================",
 		],
 		[	
