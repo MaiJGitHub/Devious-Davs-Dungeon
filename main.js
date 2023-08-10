@@ -11,7 +11,8 @@ loadSprite("key", "./sprites/key.png")
 loadSprite("man", "./sprites/Witch.png")
 loadSprite("box", "./sprites/Box2.png")
 loadSprite("spooky", "./sprites/Box2.png")
-loadSprite("gif", "./sprites/jumpscare-agatha-dark-deception-d54spbdyxgggqy9c.gif")
+// loadSprite("gif", "./sprites/jumpscare-agatha-dark-deception-d54spbdyxgggqy9c.gif")
+loadSound("gameSound","Menu.mp3")
 
 scene("intro", () => {
 	
@@ -329,8 +330,12 @@ scene("gameover", () => {
 		pos(width() / 2, height() / 2),
 		anchor("center"),
 	])
-	
-	
+	setTimeout(() => {
+		window.location.href = "menu.html";
+	}, 2000);
+
 })
+
+const gameSound = play("gameSound", {loop: true, volume: 0.5})
 
 go("main", 0)

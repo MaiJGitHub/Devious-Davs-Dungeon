@@ -24,7 +24,32 @@
 //     this.style.opacity = 0;
 // });
 
+let slideSource = document.querySelector(".wakein"); 
+slideSource.style.display = "none"
 
+const yes = () => {
+  slideSource.classList.toggle('fade');
+  slideSource.style.display = "block"
+
+  const fadeIn = () => {
+        let fade = document.querySelector(".wakein"); 
+        let opacity = 0;
+        let intervalID = setInterval(function() {
+            if (opacity < 1) {
+               opacity = opacity + 0.1
+                    fade.style.opacity = opacity;
+                    } else {
+                        clearInterval(intervalID);
+                    }
+            }, 300);
+        }
+
+        fadeIn();
+}
+
+setTimeout(() => {
+  yes();
+}, 2000);
 
 
 document.querySelector('p').addEventListener('click', function() {
