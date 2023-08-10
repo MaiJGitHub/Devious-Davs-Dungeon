@@ -32,11 +32,19 @@ scene("main", (levelIdx) => {
 		},
 		"c": {
 			sprite: "skelly",
-			msg: "You made it! Find the Key again and you win!",
+			msg: "Did you see my keys?",
 		},
 		"d": {
 			sprite: "skelly",
-			msg: "choose wisely!",
+			msg: "choose wisely boy!",
+		},
+		"q": {
+			sprite: "skelly",
+			msg: "This is tuff one, I have been stuck here for 100 years...",
+		},
+		"+": {
+			sprite: "skelly",
+			msg: "This is tuff one, I have been stuck here for 100 years...",
 		},
 	}
 
@@ -50,8 +58,8 @@ scene("main", (levelIdx) => {
 			"         =   *  *    $ =",
 			"         =  *          =",
 			"         =         #   =",
-			"         =  a @        =",
 			"         =    *        =",
+			"         =a@           =",
 			"         =         *   =",
 			"         ===============",
 		],
@@ -68,28 +76,28 @@ scene("main", (levelIdx) => {
 			"         =  =     =     = $ = # =",
 			"         =  =     =     =   =   =",
 			"         =  = ===== =====   =   =",
-			"         =  = @ =*  =   d   =   =",
-			"         = *=c  =               =",
-			"         =  =   =               =",
+			"         =  =   =*  =   d   =   =",
+			"         = *=  @=               =",
+			"         =  =c  =               =",
 			"         ========================",
 		],
 		[	
 			"                                      ",
 			"                                      ",
 			"       ======================|========",
-			"       =          *                  =",
-			"       =                             =",
-			"       =    ================         =",
-			"       =    =  *                 =   =",
-			"       =$    =                @   =  =",
-			"       =    =  =   =    ===========  =",
-			"       =    =  =   =     =     = *   =",
-			"       =    =* =*  =     = *   =     =",
+			"       =*                *=*    = $  =",
+			"       =                  =     =    =",
+			"       =    ===============   =====  =",
+			"       ===  =*                   *=  =",
+			"       =    =                     =  =",
+			"       =    =  =   =  =============  =",
+			"       =  ===  =   =  =* =  *  = *   =",
+			"       =    = *=   =  =  =     =     =",
 			"       =    ====   =     =     =     =",
-			"       =*   =      =    *=     =     =",
-			"       =    =  *   =     =     =     =",
-			"       =    ========           =     =",
-			"       =      *       =         $    =",
+			"       ===  =*     =     =     =     =",
+			"       =*   =      =     =     =     =",
+			"       =c   ========           =     =",
+			"       = @            =              =",
 			"       =              =              =",
 			"       ===============================",
 		],
@@ -145,6 +153,15 @@ scene("main", (levelIdx) => {
 				body({ isStatic: true }),
 				anchor("center"),
 				"spooky",
+				
+				
+			],
+			"&": () => [
+				sprite("skelly"),
+				area(),
+				body({ isStatic: true }),
+				anchor("center"),
+				"skelly",
 				
 				
 			],
@@ -296,7 +313,7 @@ scene("main", (levelIdx) => {
 
 scene("win", () => {
 	add([
-		text("You Survived!"),
+		text("You WIN!"),
 		pos(width() / 2, height() / 2),
 		anchor("center"),
 	])
