@@ -28,6 +28,6 @@ setTimeout(() => {
 }, 7000);
 
 
-document.querySelector('p').addEventListener('click', function() {
+document.querySelector('#startin').addEventListener('click', function() {
     window.location.href = "main.html";
 });

@@ -14,6 +14,30 @@ loadSprite("spooky", "./sprites/Box2.png")
 // loadSprite("gif", "./sprites/jumpscare-agatha-dark-deception-d54spbdyxgggqy9c.gif")
 loadSound("gameSound", "Menu.mp3")
 
+loadSpriteAtlas("B_witch_idle.png", {
+	"hero": {
+		"x": 16,
+		"y": 16,
+		"width": 32,
+		"height": 288,
+		"sliceX": 1,
+		"anims": {
+			"idle": {
+				"from": 0,
+				"to": 3,
+				"speed": 3,
+				"loop": true,
+			},
+			// "run": {
+			// 	"from": 4,
+			// 	"to": 6,
+			// 	"speed": 10,
+			// 	"loop": true,
+			// },
+		},
+	},
+})
+
 scene("intro", () => {
 
 })
