@@ -252,7 +252,6 @@ scene("main", (levelIdx) => {
 	
 	
     player.onCollide("spooky", () => {
-    	alert("works")
     	go("gameover")
     	
     	
@@ -330,6 +329,8 @@ scene("gameover", () => {
 		pos(width() / 2, height() / 2),
 		anchor("center"),
 	])
+	
+	
 })
 
 go("main", 0)
