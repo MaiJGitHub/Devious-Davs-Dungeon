@@ -11,11 +11,12 @@ loadSprite("key", "./sprites/key.png")
 loadSprite("man", "./sprites/Witch.png")
 loadSprite("box", "./sprites/Box2.png")
 loadSprite("spooky", "./sprites/Box2.png")
-loadSprite("gif", "./sprites/jumpscare-agatha-dark-deception-d54spbdyxgggqy9c.gif")
+// loadSprite("gif", "./sprites/jumpscare-agatha-dark-deception-d54spbdyxgggqy9c.gif")
+loadSound("gameSound","Menu.mp3")
 
 scene("intro", () => {
-
-})
+	
+	})
 scene("main", (levelIdx) => {
 
 	const SPEED = 280;
@@ -40,21 +41,17 @@ scene("main", (levelIdx) => {
 		},
 		"q": {
 			sprite: "skelly",
-			msg: "I still cannot find my keys :(",
+			msg: "This is tuff one, I have been stuck here for 100 years...",
 		},
 		"+": {
 			sprite: "skelly",
 			msg: "This is tuff one, I have been stuck here for 100 years...",
 		},
-		"?": {
-			sprite: "skelly",
-			msg: "These boxes dont look right hmm.",
-		},
 	}
 
 	// level layouts
 	const levels = [
-		[
+		[	
 			"                              ",
 			"                              ",
 			"         ========|======",
@@ -67,7 +64,7 @@ scene("main", (levelIdx) => {
 			"         =         *   =",
 			"         ===============",
 		],
-		[
+		[	
 			"                                         ",
 			"                                         ",
 			"         =====================|==",
@@ -85,7 +82,7 @@ scene("main", (levelIdx) => {
 			"         =  =c  =               =",
 			"         ========================",
 		],
-		[
+		[	
 			"                                      ",
 			"                                      ",
 			"       ======================|========",
@@ -95,32 +92,15 @@ scene("main", (levelIdx) => {
 			"       ===  =*                   *=  =",
 			"       =    =                     =  =",
 			"       =    =  =   =  =============  =",
-			"       =  ===  =   =  =* =  #  = *   =",
+			"       =  ===  =   =  =* =  *  = *   =",
 			"       =    = *=   =  =  =     =     =",
-			"       =    ====   =  ?  =     =     =",
+			"       =    ====   =     =     =     =",
 			"       ===  =*     =     =     =     =",
 			"       =*   =      =     =     =     =",
-			"       =q   ========           =     =",
+			"       =c   ========           =     =",
 			"       = @            =              =",
 			"       =              =              =",
 			"       ===============================",
-		],
-		[
-			"                              ",
-			"      ===========|============",
-			"      =#        =           #=",
-			"      =         =            =",
-			"      =  ==================  =",
-			"      =         =*    =*     =",
-			"      =         =     =      =",
-			"      =======  ===== =====   =",
-			"      =                 *=   =",
-			"      =                  =   =",
-			"      =  = ===== =====   =   =",
-			"      =  = @ =*  =$ =    =   =",
-			"      = *=  +=      =        =",
-			"      =  =   =      =        =",
-			"      ========================",
 		],
 	]
 
@@ -167,15 +147,15 @@ scene("main", (levelIdx) => {
 				body({ isStatic: true }),
 				anchor("center"),
 			],
-
+			
 			"#": () => [
 				sprite("spooky"),
 				area(),
 				body({ isStatic: true }),
 				anchor("center"),
 				"spooky",
-
-
+				
+				
 			],
 			"&": () => [
 				sprite("skelly"),
@@ -183,8 +163,8 @@ scene("main", (levelIdx) => {
 				body({ isStatic: true }),
 				anchor("center"),
 				"skelly",
-
-
+				
+				
 			],
 		},
 		// any() is a special function that gets called everytime there's a
@@ -249,10 +229,10 @@ scene("main", (levelIdx) => {
 			},
 		}
 	}
-
+	
 	let hasKey = false
 	const dialog = addDialog()
-
+	
 
 	player.onCollide("key", (key) => {
 		destroy(key)
@@ -263,56 +243,54 @@ scene("main", (levelIdx) => {
 		if (hasKey) {
 			if (levelIdx + 1 < levels.length) {
 				go("main", levelIdx + 1)
-			}
-			else {
+			} else {
 				go("win")
 			}
-		}
-		else {
+		} else {
 			dialog.say("Wheres your keys?!")
 		}
 	})
-
-
-	player.onCollide("spooky", () => {
-		go("gameover")
-
-
+	
+	
+    player.onCollide("spooky", () => {
+    	go("gameover")
+    	
+    	
 		// const audio = new Audio('');
-		//      const audio2 = new Audio('');
-		//      audio.play();
+  //      const audio2 = new Audio('');
+  //      audio.play();
 
-		// setTimeout(() => {
-		//   document.getElementById('').style.display = 'none';
-		//   audio.pause();
-		//   document.getElementById('').style.display = 'inline-block';
-		//   audio2.play();
-		//   setTimeout(() => {
-		//     document.getElementById('').style.display = 'none';
-		//     document.getElementById('').style.display = 'inline-block';
-		//     setTimeout(() => {
-		//       window.location.href = "";
-		//     }, 8900);
-		//     //static for a few seconds then game over screen then reset to main menu
-		//   }, 2700);
+        // setTimeout(() => {
+        //   document.getElementById('').style.display = 'none';
+        //   audio.pause();
+        //   document.getElementById('').style.display = 'inline-block';
+        //   audio2.play();
+        //   setTimeout(() => {
+        //     document.getElementById('').style.display = 'none';
+        //     document.getElementById('').style.display = 'inline-block';
+        //     setTimeout(() => {
+        //       window.location.href = "";
+        //     }, 8900);
+        //     //static for a few seconds then game over screen then reset to main menu
+        //   }, 2700);
 
-		//   //static for a few seconds then game over screen then reset to main menu
-		// }, 900);
+        //   //static for a few seconds then game over screen then reset to main menu
+        // }, 900);
 	})
 	let jumpscareTriggered = false;
-
+	
 	// player.onCollide("spooky", () => {
-	//       if (!jumpscareTriggered) {
-	//           jumpscareTriggered = true;
-	//           const jumpscareEntity = add([
-	//               sprite("gif"), // Replace with your actual jumpscare GIF sprite name
-	//               pos(player.pos), // Display the jumpscare at the player's position
-	//               anchor("center"),
-	//               scale(1.5), // Adjust scale as needed
-	//           ]);
-	//       }
-	//   });
-
+ //       if (!jumpscareTriggered) {
+ //           jumpscareTriggered = true;
+ //           const jumpscareEntity = add([
+ //               sprite("gif"), // Replace with your actual jumpscare GIF sprite name
+ //               pos(player.pos), // Display the jumpscare at the player's position
+ //               anchor("center"),
+ //               scale(1.5), // Adjust scale as needed
+ //           ]);
+ //       }
+ //   });
+	
 
 	// talk on touch
 	player.onCollide("character", (ch) => {
@@ -352,8 +330,12 @@ scene("gameover", () => {
 		pos(width() / 2, height() / 2),
 		anchor("center"),
 	])
-
+	setTimeout(() => {
+		window.location.href = "menu.html";
+	}, 2000);
 
 })
+
+const gameSound = play("gameSound", {loop: true, volume: 0.5})
 
 go("main", 0)
